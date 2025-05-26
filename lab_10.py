@@ -4,8 +4,8 @@ sounds = ['A', 'E', 'Meow']
 
 for name in sounds:
     changeSampleRate(f"audio{name}.wav")
-    sample_rate, samples = wavfile.read(f"audio/results/audio{name}.wav")
-    spectogram, frequencies = spectrogramPlot(samples, sample_rate, 11000)
+    sampleRate, samples = wavfile.read(f"audio/results/audio{name}.wav")
+    spectogram, frequencies = spectrogramPlot(samples, sampleRate, 11000)
     spec = integralImg(spectogram)
 
     if name != 'Meow':
@@ -36,5 +36,5 @@ for name in sounds:
             print(f"Максимальная частота для звука {name}: {str(formants[-2])}", file=file)
 
     dpi = 500
-    plt.savefig('audio/results/spectrogramA.png', dpi=dpi)
+    plt.savefig(f"audio/results/spectrogram{name}.png", dpi=dpi)
     plt.clf()
